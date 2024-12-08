@@ -1,11 +1,10 @@
 // src/app/components/RepoList.tsx
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { useUserRepos } from "../hooks/useGithub";
 import styles from "./RepoList.module.css"; // Styling eksternal
 import { Repo } from "../types/types";
 import { setSelectedRepo } from "../store/repoSlice"; // Import setSelectedRepo
-import Modal from "./ModalRepoReadme"; // Import the Modal component
 
 interface RepoListProps {
   username: string;

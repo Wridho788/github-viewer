@@ -1,6 +1,6 @@
 // src/hooks/useGitHub.ts
 import { useQuery } from "@tanstack/react-query";
-import { getUserRepos, getRepoReadme } from "../app/api/github";
+import { getUserRepos } from "../app/api/github";
 
 export const useUserRepos = (username: string) => {
   return useQuery({

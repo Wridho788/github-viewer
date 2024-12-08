@@ -14,8 +14,6 @@ const RepoList = dynamic(() => import("../components/RepoList"), { ssr: false })
 export default function Home() {
   // State for managing user input (GitHub username)
   const [username, setUsername] = useState(""); 
-  // State for error messages (currently unused but prepared for future use)
-  const [error, setError] = useState(""); 
   // State for the current search term (submitted GitHub username)
   const [search, setSearch] = useState(""); 
   // State for toggling modal visibility
@@ -83,8 +81,7 @@ export default function Home() {
               {search && <RepoList username={search} onPress={handlePress} />}
             </div>
 
-            {/* Display error message if `error` state is set */}
-            {error && <p className={styles.error}>{error}</p>}
+           
           </div>
         </main>
 
