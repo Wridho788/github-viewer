@@ -10,72 +10,94 @@ import styles from "./page.module.css"; // CSS module for styling
 
 // Dynamically import the RepoList component to optimize server-side rendering (SSR)
 const RepoList = dynamic(() => import("../components/RepoList"), { ssr: false });
-
+// Main functional component for the Home page
 export default function Home() {
-  const [username, setUsername] = useState("");
-  const [error, setError] = useState("");
-  const [search, setSearch] = useState("");
-  // const [notFound, setNotFound] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  // State for managing user input (GitHub username)
+  const [username, setUsername] = useState(""); 
+  // State for error messages (currently unused but prepared for future use)
+  const [error, setError] = useState(""); 
+  // State for the current search term (submitted GitHub username)
+  const [search, setSearch] = useState(""); 
+  // State for toggling modal visibility
+  const [showModal, setShowModal] = useState(false); 
+  // Handle form submission for searching repositories
   const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSearch(username);
+    e.preventDefault(); // Prevent default form submission behavior
+    setSearch(username); // Set search state with the current username
   };
 
-  const handlePress=()=>{
-    setShowModal(true)
-  }
+  // Handle showing the modal when a repository is selected
+  const handlePress = () => {
+    setShowModal(true); // Show the modal
+  };
   return (
     <>
-    <div className={styles.container}>
-      <header className={styles.header}>
-        <div className={styles.headerContent}>
-          <Image
-            src="/github-icon.svg"
-            alt="GitHub Logo"
-            width={40}
-            height={40}
-            className={styles.logo}
-          />
+       {/* Main container for the page */}
+       <div className={styles.container}>
+        {/* Header section */}
+        <header className={styles.header}>
+          <div className={styles.headerContent}>
+            {/* Logo Image */}
+            <Image
+              src="/icon.svg"
+              alt="GitHub Logo"
+              width={40}
+              height={40}
+              className={styles.logo}
+            />
 
-          <h1>GitHub Viewer</h1>
-        </div>
-        <p className={styles.subtitle}>
-          Discover repositories and README files easily
-        </p>
-      </header>
-
-      <main className={styles.main}>
-        <div className={styles.card}>
-          <h2>Search GitHub Repositories</h2>
-          <div className={styles.searchBox}>
-            <form onSubmit={handleSearch}>
-              <input
-                type="text"
-                placeholder="Enter GitHub username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                className={styles.input}
-              />
-              <button type="submit" className={styles.button}>
-                Search
-              </button>
-            </form>
-            {search && <RepoList username={search} onPress={handlePress}/>}
+            {/* Page title */}
+            <h1>GitHub Viewer</h1>
           </div>
-          {error && <p className={styles.error}>{error}</p>}
-        </div>
-     
-      </main>
 
-      <footer className={styles.footer}>
-        <p>© 2024 GitHub Viewer | Made Ridho Wahyu Nugroho</p>
-      </footer>
-    </div>
+          {/* Subtitle */}
+          <p className={styles.subtitle}>
+            Discover repositories and README files easily
+          </p>
+        </header>
 
-    {/* Show modal if selectedRepo exists */}
-    {showModal && <Modal onClose={() => setShowModal(false)} />}
+        {/* Main content section */}
+        <main className={styles.main}>
+          {/* Card container for the search input */}
+          <div className={styles.card}>
+            <h2>Search GitHub Repositories</h2>
 
+            {/* Search form */}
+            <div className={styles.searchBox}>
+              <form onSubmit={handleSearch}>
+                {/* Input field for GitHub username */}
+                <input
+                  type="text"
+                  placeholder="Enter GitHub username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)} // Update username state
+                  className={styles.input}
+                />
+                {/* Search button */}
+                <button type="submit" className={styles.button}>
+                  Search
+                </button>
+              </form>
+
+              {/* Dynamically load and display the RepoList component when search is set */}
+              {search && <RepoList username={search} onPress={handlePress} />}
+            </div>
+
+            {/* Display error message if `error` state is set */}
+            {error && <p className={styles.error}>{error}</p>}
+          </div>
+        </main>
+
+        {/* Footer section */}
+        <footer className={styles.footer}>
+          <p>© 2024 GitHub Viewer | Made Ridho Wahyu Nugroho</p>
+        </footer>
+      </div>
+
+      {/* Modal for showing repository README files */}
+      {showModal && (
+        <Modal onClose={() => setShowModal(false)} /> // Close modal when triggered
+      )}
     </>
   );
 }

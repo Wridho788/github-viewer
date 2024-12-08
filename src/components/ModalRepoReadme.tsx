@@ -8,10 +8,12 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({ onClose }) => {
-  // Mengambil repository yang dipilih dari Redux state
-  const selectedRepo = useSelector((state: RootState) => state.repo.selectedRepo);
+    // Fetch the selected repository from the Redux store
 
-  if (!selectedRepo) return null; // Tidak merender modal jika tidak ada repo yang dipilih
+  const selectedRepo = useSelector((state: RootState) => state.repo.selectedRepo);
+  if (!selectedRepo) return null; // Do not render the modal if no repository is selected
+
+  // Destructure the selected repository data for cleaner code
 
   return (
     <div className={styles.overlay}>
