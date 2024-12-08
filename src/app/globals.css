@@ -1,0 +1,39 @@
+/* src/app/globals.css */
+:root {
+  --primary-color: #0366d6;
+  --secondary-color: #24292e;
+  --background-color: #f6f8fa;
+  --text-color: #333;
+  --border-radius: 8px;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+@media (max-width: 768px) {
+  /* Adjust layout for smaller screens */
+  .repo-list-card {
+    flex-direction: column;
+    margin: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Adjust for very small screens */
+  .repo-list-card {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
