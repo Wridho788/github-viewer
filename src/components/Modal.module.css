@@ -1,0 +1,135 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #ffffff;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  background: #0070f3;
+  color: white;
+  padding: 16px;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 16px;
+}
+
+.repoName {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.ownerName {
+  margin: 4px 0 0;
+  font-size: 0.9rem;
+  color: #e0e0e0;
+}
+
+.modalBody {
+  padding: 16px;
+}
+
+.repoDescription {
+  font-size: 1rem;
+  margin-bottom: 16px;
+  color: #333;
+  line-height: 1.5;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.stats div {
+  flex: 1;
+  padding: 8px;
+  border-right: 1px solid #f0f0f0;
+}
+
+.stats div:last-child {
+  border-right: none;
+}
+
+.stats span {
+  display: block;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.stats strong {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.modalFooter {
+  padding: 16px;
+  background: #f9f9f9;
+  text-align: center;
+}
+
+.githubLink {
+  color: #0070f3;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: 2px solid #0070f3;
+  border-radius: 4px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.githubLink:hover {
+  background: #0070f3;
+  color: white;
+}
+
+.closeButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.closeButton:hover {
+  transform: rotate(90deg);
+  color: #ff0000;
+}

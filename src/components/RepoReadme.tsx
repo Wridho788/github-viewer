@@ -1,6 +1,7 @@
 // src/app/components/RepoReadme.tsx
 import React, {useState, useEffect} from 'react';
 import { useRepoReadme } from '../hooks/useGithub';
+import { useRouter } from "next/router";
 
 interface RepoReadmeProps {
   username: string;
@@ -11,7 +12,8 @@ const RepoReadme: React.FC<RepoReadmeProps> = ({ username, repo }) => {
   const [readme, setReadme] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-
+  const router = useRouter();
+  const { repoName } = router.query; 
   // useEffect(() => {
   //   const fetchReadme = async () => {
   //     try {

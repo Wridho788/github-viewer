@@ -1,97 +1,153 @@
 .container {
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #f6f8fa;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
-  padding: 0 1rem;
 }
 
 .header {
+  background-color: #ffffff;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #e1e4e8;
   text-align: center;
-  margin: 2rem 0;
 }
 
-.header h1 {
-  font-size: 2.5rem;
-  margin: 0.5rem 0;
-  color: var(--secondary-color);
-}
-
-.subtitle {
-  font-size: 1.2rem;
-  color: #555;
-}
-
-.main {
-  flex: 1;
+.headerContent {
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: 100%;
-}
-
-.card {
-  background: white;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: var(--border-radius);
-  padding: 2rem;
-  text-align: center;
-  max-width: 400px;
-  width: 100%;
-}
-
-.card h2 {
-  font-size: 1.8rem;
-  color: var(--secondary-color);
-  margin-bottom: 1rem;
-}
-
-.searchBox {
-  display: flex;
-  flex-direction: column;
+  justify-content: center;
   gap: 1rem;
 }
 
-.input {
-  padding: 0.75rem;
-  font-size: 1rem;
-  border: 1px solid #ddd;
-  border-radius: var(--border-radius);
+.subtitle {
+  margin-top: 0.5rem;
+  color: #586069;
+}
+.main {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f6f8fa; /* Warna latar untuk kontras */
+}
+
+.card {
+  background: #ffffff;
+  padding: 2rem;
+  border: 1px solid #e1e4e8;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   width: 100%;
-  transition: box-shadow 0.3s ease;
+  max-width: 600px;
+  text-align: center;
+}
+
+.card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #24292e;
+}
+
+.searchBox {
+  margin-top: 1.5rem;
+}
+
+.input {
+  width: 70%;
+  padding: 0.5rem;
+  border: 1px solid #e1e4e8;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
 }
 
 .input:focus {
+  border-color: #0366d6;
   outline: none;
-  box-shadow: 0 0 0 3px var(--primary-color);
+  box-shadow: 0 0 3px rgba(3, 102, 214, 0.5);
 }
 
 .button {
-  padding: 0.75rem;
-  font-size: 1rem;
-  background-color: var(--primary-color);
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #0366d6;
   color: white;
   border: none;
-  border-radius: var(--border-radius);
+  border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .button:hover {
-  background-color: #024ea2;
+  background-color: #005bb5;
+  transform: translateY(-2px); /* Efek naik saat hover */
+}
+
+.button:active {
+  transform: translateY(0); /* Reset saat klik */
 }
 
 .error {
-  color: red;
-  font-size: 0.9rem;
+  color: #d73a49;
   margin-top: 1rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .input {
+    width: 100%; /* Form melebar penuh */
+    margin-bottom: 0.5rem; /* Jarak bawah untuk tombol */
+  }
+
+  .button {
+    margin-left: 0; /* Reset margin kiri */
+    width: 100%; /* Tombol penuh */
+  }
+}
+.resultsCard {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: #ffffff;
+  border: 1px solid #e1e4e8;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 1200px;
+}
+
+.resultsTitle {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #24292e;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsif */
+  gap: 16px;
 }
 
 .footer {
-  text-align: center;
-  margin-top: auto;
+  background-color: #ffffff;
   padding: 1rem;
-  background-color: var(--secondary-color);
-  color: white;
-  width: 100%;
+  text-align: center;
+  border-top: 1px solid #e1e4e8;
+  font-size: 0.9rem;
+}
+
+
+@media (max-width: 768px) {
+  .gridContainer {
+    grid-template-columns: 1fr; /* Satu kolom di layar kecil */
+  }
+
+  .resultsCard {
+    padding: 1rem; /* Kurangi padding di layar kecil */
+  }
 }
